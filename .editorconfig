@@ -14,6 +14,6 @@ trim_trailing_whitespace = false
 [*.yml]
 indent_size = 2
 
-[*.{js,html,blade.php,css,scss}]
+[*.{js,html,php,blade.php,css,scss}]
 indent_style = space
 indent_size = 2
