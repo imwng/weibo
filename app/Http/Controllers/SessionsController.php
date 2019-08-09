@@ -25,7 +25,7 @@ class SessionsController extends Controller
          * 2. 成功 -> 创建会话 & 种下一个 laravel_session & true
          * 3. 失败 -> false
          */
-        if (Auth::attempt($credentials))
+        if (Auth::attempt($credentials, $request->has('remember')))
         {
             // 登录成功
             session()->flash('success', '欢迎回来~');
