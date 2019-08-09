@@ -24,6 +24,7 @@ class SessionsController extends Controller
          * 1. 验证
          * 2. 成功 -> 创建会话 & 种下一个 laravel_session & true
          * 3. 失败 -> false
+         * 4. 添加 remember 后，多种下一个remember_web，当 laravel_session 2个小时后过期时，会判断有没有 remember 这个session，有就更新 laravel_session，没有就退出账号
          */
         if (Auth::attempt($credentials, $request->has('remember')))
         {
