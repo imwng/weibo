@@ -21,6 +21,11 @@ Route::get('/about', 'StaticPagesController@about')->name('about');
 
 Route::get('/signup', 'UsersController@create')->name('signup');
 
+
+/**
+ * 注册
+ */
+
 // Route::resource('users', 'UsersController');
 
 // 隐性路由模型绑定的好处：
@@ -31,3 +36,11 @@ Route::get('/signup', 'UsersController@create')->name('signup');
 Route::get('/users/{user}', 'UsersController@show')->name('users.show'); # 显示个人信息
 
 Route::post('/users', 'UsersController@store')->name('users.store'); # 注册
+
+
+/**
+ * 登录、退出
+ */
+Route::get('login', 'SessionsController@create')->name('login');  # 登录页
+Route::post('login', 'SessionsController@store')->name('login');  # 登录操作
+Route::delete('logout', 'SessionsController@destroy')->name('logout');  # 退出操作
