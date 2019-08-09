@@ -28,4 +28,6 @@ Route::get('/signup', 'UsersController@create')->name('signup');
 // 开启条件：
 // 1. 传参变量必须是模型单数形式
 // 2. 控制器方法里要显式声明模型类型 public function show(User $user) {}
-Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+Route::get('/users/{user}', 'UsersController@show')->name('users.show'); # 显示个人信息
+
+Route::post('/users', 'UsersController@store')->name('users.store'); # 注册
