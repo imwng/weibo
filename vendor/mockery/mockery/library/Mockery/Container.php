@@ -151,13 +151,7 @@ class Container
                 $parts[1] = str_replace(' ', '', $parts[1]);
                 $partialMethods = explode(',', strtolower(rtrim($parts[1], ']')));
                 $builder->addTarget($class);
-                foreach ($partialMethods as $partialMethod) {
-                    if ($partialMethod[0] === '!') {
-                        $builder->addBlackListedMethod(substr($partialMethod, 1));
-                        continue;
-                    }
-                    $builder->addWhiteListedMethod($partialMethod);
-                }
+                $builder->setWhiteListedMethods($partialMethods);
                 array_shift($args);
                 continue;
             } elseif (is_string($arg) && (class_exists($arg, true) || interface_exists($arg, true) || trait_exists($arg, true))) {
@@ -222,7 +216,7 @@ class Container
 
         if (class_exists($def->getClassName(), $attemptAutoload = false)) {
             $rfc = new \ReflectionClass($def->getClassName());
-            if (!$rfc->implementsInterface("Mockery\LegacyMockInterface")) {
+            if (!$rfc->implementsInterface("Mockery\MockInterface")) {
                 throw new \Mockery\Exception\RuntimeException("Could not load mock {$def->getClassName()}, class already exists");
             }
         }
@@ -401,7 +395,7 @@ class Container
      * @throws \Mockery\Exception
      * @return void
      */
-    public function mockery_validateOrder($method, $order, \Mockery\LegacyMockInterface $mock)
+    public function mockery_validateOrder($method, $order, \Mockery\MockInterface $mock)
     {
         if ($order < $this->_currentOrder) {
             $exception = new \Mockery\Exception\InvalidOrderException(
@@ -435,9 +429,9 @@ class Container
      * Store a mock and set its container reference
      *
      * @param \Mockery\Mock $mock
-     * @return \Mockery\LegacyMockInterface|\Mockery\MockInterface
+     * @return \Mockery\MockInterface
      */
-    public function rememberMock(\Mockery\LegacyMockInterface $mock)
+    public function rememberMock(\Mockery\MockInterface $mock)
     {
         if (!isset($this->_mocks[get_class($mock)])) {
             $this->_mocks[get_class($mock)] = $mock;

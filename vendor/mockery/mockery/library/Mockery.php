@@ -27,7 +27,6 @@ use Mockery\Loader\EvalLoader;
 use Mockery\Loader\Loader;
 use Mockery\Matcher\MatcherAbstract;
 use Mockery\ClosureWrapper;
-use Mockery\Generator\MockNameBuilder;
 
 class Mockery
 {
@@ -111,7 +110,7 @@ class Mockery
      *
      * @param mixed ...$args
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return \Mockery\MockInterface
      */
     public static function mock(...$args)
     {
@@ -124,7 +123,7 @@ class Mockery
      *
      * @param mixed ...$args
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return \Mockery\MockInterface
      */
     public static function spy(...$args)
     {
@@ -140,7 +139,7 @@ class Mockery
      *
      * @param mixed ...$args
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return \Mockery\MockInterface
      */
     public static function instanceMock(...$args)
     {
@@ -152,7 +151,7 @@ class Mockery
      *
      * @param mixed ...$args
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return \Mockery\MockInterface
      */
     public static function namedMock(...$args)
     {
@@ -171,7 +170,7 @@ class Mockery
      *
      * @throws LogicException
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return \Mockery\MockInterface
      */
     public static function self()
     {
@@ -732,12 +731,12 @@ class Mockery
      * Utility function to parse shouldReceive() arguments and generate
      * expectations from such as needed.
      *
-     * @param Mockery\LegacyMockInterface $mock
+     * @param Mockery\MockInterface $mock
      * @param array ...$args
      * @param callable $add
      * @return \Mockery\CompositeExpectation
      */
-    public static function parseShouldReturnArgs(\Mockery\LegacyMockInterface $mock, $args, $add)
+    public static function parseShouldReturnArgs(\Mockery\MockInterface $mock, $args, $add)
     {
         $composite = new \Mockery\CompositeExpectation();
 
@@ -760,13 +759,13 @@ class Mockery
      * Sets up expectations on the members of the CompositeExpectation and
      * builds up any demeter chain that was passed to shouldReceive.
      *
-     * @param \Mockery\LegacyMockInterface $mock
+     * @param \Mockery\MockInterface $mock
      * @param string $arg
      * @param callable $add
      * @throws Mockery\Exception
      * @return \Mockery\ExpectationInterface
      */
-    protected static function buildDemeterChain(\Mockery\LegacyMockInterface $mock, $arg, $add)
+    protected static function buildDemeterChain(\Mockery\MockInterface $mock, $arg, $add)
     {
         /** @var Mockery\Container $container */
         $container = $mock->mockery_getContainer();
@@ -856,10 +855,7 @@ class Mockery
                 $parRefMethodRetType = $parRefMethod->getReturnType();
 
                 if ($parRefMethodRetType !== null) {
-                    $nameBuilder = new MockNameBuilder();
-                    $nameBuilder->addPart('\\' . $newMockName);
-                    $type = PHP_VERSION_ID >= 70100 ? $parRefMethodRetType->getName() : (string)$parRefMethodRetType;
-                    $mock = self::namedMock($nameBuilder->build(), $type);
+                    $mock = self::namedMock($newMockName, (string) $parRefMethodRetType);
                     $exp->andReturn($mock);
 
                     return $mock;

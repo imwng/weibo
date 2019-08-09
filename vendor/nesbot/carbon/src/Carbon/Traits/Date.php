@@ -1102,24 +1102,16 @@ trait Date
                 break;
 
             case 'week':
-                $this->week($value);
-
-                break;
+                return $this->week($value);
 
             case 'isoWeek':
-                $this->isoWeek($value);
-
-                break;
+                return $this->isoWeek($value);
 
             case 'weekYear':
-                $this->weekYear($value);
-
-                break;
+                return $this->weekYear($value);
 
             case 'isoWeekYear':
-                $this->isoWeekYear($value);
-
-                break;
+                return $this->isoWeekYear($value);
 
             case 'dayOfYear':
                 return $this->addDays($value - $this->dayOfYear);
@@ -2234,14 +2226,7 @@ trait Date
     protected static function executeStaticCallable($macro, ...$parameters)
     {
         if ($macro instanceof Closure) {
-            // @TODO allow to call new static() / unbind $this in PHP 8
-            // (see with Laravel team how they plan to handle this in marcos)
-
-            if (version_compare(PHP_VERSION, '8.0.0-dev', '<')) {
-                $macro = Closure::bind($macro, null, get_called_class());
-            }
-
-            return call_user_func_array($macro, $parameters);
+            return call_user_func_array(Closure::bind($macro, null, get_called_class()), $parameters);
         }
 
         return call_user_func_array($macro, $parameters);

@@ -344,7 +344,7 @@ trait Options
      *
      * @param array $settings
      *
-     * @return $this|static
+     * @return $this
      */
     public function settings(array $settings)
     {
@@ -357,7 +357,7 @@ trait Options
         $this->localMacros = $settings['macros'] ?? null;
         $this->localGenericMacros = $settings['genericMacros'] ?? null;
         $this->localFormatFunction = $settings['formatFunction'] ?? null;
-
+        $date = $this;
         if (isset($settings['locale'])) {
             $locales = $settings['locale'];
 
@@ -365,14 +365,13 @@ trait Options
                 $locales = [$locales];
             }
 
-            $this->locale(...$locales);
+            $date = $date->locale(...$locales);
         }
-
         if (isset($settings['timezone'])) {
-            return $this->shiftTimezone($settings['timezone']);
+            $date = $date->shiftTimezone($settings['timezone']);
         }
 
-        return $this;
+        return $date;
     }
 
     /**

@@ -69,6 +69,57 @@
         ]
     },
     {
+        "name": "caouecs/laravel-lang",
+        "version": "3.0.62",
+        "version_normalized": "3.0.62.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/caouecs/Laravel-lang.git",
+            "reference": "fcb8cec051b175278e0a9efa440f0b1033d12dd7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/fcb8cec051b175278e0a9efa440f0b1033d12dd7",
+            "reference": "fcb8cec051b175278e0a9efa440f0b1033d12dd7",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.10"
+        },
+        "suggest": {
+            "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
+            "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
+            "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+            "overtrue/laravel-lang": "Command to add languages in your project"
+        },
+        "time": "2019-03-17T10:36:46+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "caouecs",
+                "email": "caouecs@caouecs.net"
+            }
+        ],
+        "description": "Languages for Laravel",
+        "keywords": [
+            "lang",
+            "languages",
+            "laravel",
+            "lpm"
+        ]
+    },
+    {
         "name": "dnoegel/php-xdg-base-dir",
         "version": "0.1",
         "version_normalized": "0.1.0.0",
@@ -1169,17 +1220,17 @@
     },
     {
         "name": "mockery/mockery",
-        "version": "1.2.3",
-        "version_normalized": "1.2.3.0",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/mockery/mockery.git",
-            "reference": "4eff936d83eb809bde2c57a3cea0ee9643769031"
+            "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mockery/mockery/zipball/4eff936d83eb809bde2c57a3cea0ee9643769031",
-            "reference": "4eff936d83eb809bde2c57a3cea0ee9643769031",
+            "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+            "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
             "shasum": "",
             "mirrors": [
                 {
@@ -1196,7 +1247,7 @@
         "require-dev": {
             "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
         },
-        "time": "2019-08-07T15:01:07+00:00",
+        "time": "2019-02-13T09:37:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1384,17 +1435,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.22.3",
-        "version_normalized": "2.22.3.0",
+        "version": "2.22.2",
+        "version_normalized": "2.22.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e"
+            "reference": "ec355b933f9b635fbc418c3b351e3886686f5a21"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
-            "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ec355b933f9b635fbc418c3b351e3886686f5a21",
+            "reference": "ec355b933f9b635fbc418c3b351e3886686f5a21",
             "shasum": "",
             "mirrors": [
                 {
@@ -1411,12 +1462,12 @@
         "require-dev": {
             "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
             "kylekatarnls/multi-tester": "^1.1",
-            "phpmd/phpmd": "dev-php-7.1-compatibility",
+            "phpmd/phpmd": "^2.6",
             "phpstan/phpstan": "^0.11",
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2019-08-07T12:36:44+00:00",
+        "time": "2019-08-07T08:59:53+00:00",
         "bin": [
             "bin/carbon"
         ],
@@ -1655,6 +1706,59 @@
             "serializable",
             "serialization",
             "serialize"
+        ]
+    },
+    {
+        "name": "overtrue/laravel-lang",
+        "version": "3.0.16",
+        "version_normalized": "3.0.16.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/overtrue/laravel-lang.git",
+            "reference": "44917b643ca49d1bbac54f205cd6a51f2e71908f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/44917b643ca49d1bbac54f205cd6a51f2e71908f",
+            "reference": "44917b643ca49d1bbac54f205cd6a51f2e71908f",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "caouecs/laravel-lang": "~3.0",
+            "symfony/process": "^3.0|^4.0"
+        },
+        "time": "2019-03-02T05:41:26+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Overtrue\\LaravelLang\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "overtrue",
+                "email": "anzhengchao@gmail.com"
+            }
+        ],
+        "description": "List of 52 languages for Laravel 5",
+        "keywords": [
+            "languages",
+            "laravel",
+            "overtrue"
         ]
     },
     {

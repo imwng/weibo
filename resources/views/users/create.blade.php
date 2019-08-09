@@ -8,6 +8,9 @@
       <h5>注册</h5>
     </div>
     <div class="card-body">
+      <!-- 错误信息 -->
+      @include('shared._errors')
+
       <form method="POST" action="{{ route('users.store') }}">
         <!-- csrf 跨站请求伪造: 在浏览器里访问url,会自动带上cookie -->
         {{ csrf_field() }}
