@@ -7,6 +7,20 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+    // php 构造器，放置auth中间件，过滤非法请求
+    public function __construct()
+    {
+        // 未通过auth验证，默认重定向到登录页面
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store'] # 添加不过滤的白名单，except 排除
+        ]);
+
+        // 只让未登录用户访问注册页面
+        $this->middleware('auth', [
+            'only' => ['create']
+        ]);
+    }
+
     public function create()
     {
         return view('users.create');
@@ -43,12 +57,14 @@ class UsersController extends Controller
     // 编辑资料页面
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
     // 更新资料操作
     public function update(User $user, Request $request)
     {
+        $this->authorize('update', $user);
         $this->validate($request, [
             'name'=>'required|max:50',
             'password'=>'nullable|confirmed|min:6'
