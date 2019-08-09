@@ -44,3 +44,10 @@ Route::post('/users', 'UsersController@store')->name('users.store'); # 注册
 Route::get('login', 'SessionsController@create')->name('login');  # 登录页
 Route::post('login', 'SessionsController@store')->name('login');  # 登录操作
 Route::delete('logout', 'SessionsController@destroy')->name('logout');  # 退出操作
+
+
+/**
+ * 编辑用户
+ */
+Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit'); # 编辑用户表单页
+Route::patch('/users/{user}', 'UsersController@update')->name('users.update'); # 更新操作
