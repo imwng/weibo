@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -11,14 +12,14 @@ class UsersController extends Controller
     public function __construct()
     {
         // 未通过auth验证，默认重定向到登录页面
-        $this->middleware('auth', [
-            'except' => ['show', 'create', 'store'] # 添加不过滤的白名单，except 排除
-        ]);
+        // $this->middleware('auth', [
+        //     'except' => ['show', 'create', 'store', 'index'] # 添加不过滤的白名单，except 排除
+        // ]);
 
-        // 只让未登录用户访问注册页面
-        $this->middleware('auth', [
-            'only' => ['create']
-        ]);
+        // // 只让未登录用户访问注册页面
+        // $this->middleware('guest', [
+        //     'only' => ['create']
+        // ]);
     }
 
     public function create()
@@ -81,5 +82,12 @@ class UsersController extends Controller
         session()->flash('success', '个人资料更新成功');
 
         return redirect()->route('users.show', $user->id);
+    }
+
+    public function index()
+    {
+        // var_dump('1');
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
     }
 }

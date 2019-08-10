@@ -51,3 +51,5 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');  # 退出
  */
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit'); # 编辑用户表单页
 Route::patch('/users/{user}', 'UsersController@update')->name('users.update'); # 更新操作
+
+Route::get('/users', 'UsersController@index')->name('users.index'); # 用户列表页面
