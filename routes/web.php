@@ -53,3 +53,5 @@ Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit'); # 
 Route::patch('/users/{user}', 'UsersController@update')->name('users.update'); # 更新操作
 
 Route::get('/users', 'UsersController@index')->name('users.index'); # 用户列表页面
+
+Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy'); # 删除用户操作
