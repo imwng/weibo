@@ -64,3 +64,6 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update'); # 执行密码更新操作
 
 Route::resource('statuses', 'StatusesController', ['only'=>['store', 'destroy']]);
+
+Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings'); # 显示用户的关注人列表
+Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers'); # 显示用户的粉丝列表
