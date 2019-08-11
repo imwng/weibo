@@ -14,7 +14,7 @@ class UsersController extends Controller
     {
         // 未通过auth验证，默认重定向到登录页面
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store', 'index', 'confirmEmail'] # 添加不过滤的白名单，except 排除
+            'except' => ['create', 'store', 'index', 'confirmEmail'] # 添加不过滤的白名单，except 排除
         ]);
 
         // 只让未登录用户访问注册页面
@@ -30,7 +30,8 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $statuses = $user->statuses()->orderBy('created_at', 'desc')->paginate(10);
+        return view('users.show', compact('user', 'statuses'));
     }
 
     public function store(Request $request)
